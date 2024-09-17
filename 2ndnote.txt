@@ -1,0 +1,63 @@
+go to Storage press on create Bucket. i named it as bucket
+66e17d8200131f6d4944
+
+and after filling .env codes go to .env.sample and fill it aswell
+
+REACT_APP_APPWRITE_URL=https://cloud.appwrite.io/v1
+REACT_APP_APPWRITE_PROJECT_ID=
+REACT_APP_APPWRITE_DATABASE_ID=
+REACT_APP_APPWRITE_COLLECTION_ID=
+REACT_APP_APPWRITE_BUCKET_ID=
+
+inside src create folder conf and inside that create
+conf.js
+
+const conf = {
+    appwriteUrl: String(process.env.REACT_APP_APPWRITE_URL),
+}
+
+export default conf
+
+value of appwriteUrl will be String() we access data by 
+process.env.what we want.
+
+conf.js:
+const conf = {
+    appwriteUrl: String(process.env.REACT_APP_APPWRITE_URL),
+    appwriteProjectID: String(process.env.REACT_APP_APPWRITE_PROJECT_ID),
+    appwriteDatabaseID: String(process.env.REACT_APP_APPWRITE_DATABASE_ID),
+    appwriteCollectionID: String(process.env.REACT_APP_APPWRITE_COLLECTION_ID),
+    appwriteBucketID: String(process.env.REACT_APP_APPWRITE_BUCKET_ID)
+}
+//this simple export helps save so much of time and trouble.
+
+// if we face a problem its all in here and in major projects and big
+//companies this is a common practice
+
+export default conf
+
+now setup for next video go to src create new folder called
+appwrite. we create a file called auth.js
+
+we studied a lil of appwrite. we want to create these services.
+when we work with these type of applications specially backend as a
+service. we want to create a service file that encapsulates the details
+how registration works. someone that uses our application shouldnt worry about that
+he should see this that they provide email and password or photo and
+we register them as a user. what we do in the internal detail should be hidden
+or abrstracted from the user.
+
+another advantage doing this approach is maybe we're working react native
+or another application we can re use this exact same code and use it. its a
+good practice that we can reuse this code.
+
+
+we removed this cause we implemented them in class and now we're gonna go deeper.
+
+const client = new Client()
+    //use setEndpoint( 'https://cloud.appwrite.io/v1' ) as api endpoint if it failed.
+    .setProject(conf.appwriteProjectID); // Your project ID
+
+const account = new Account(client);
+
+we created auth.js and now we're going to use storage of appwrite to see how things work.

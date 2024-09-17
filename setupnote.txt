@@ -1,0 +1,121 @@
+inside src we create an app called .env
+
+these environment variables are very important at that point of time
+so that sensitive information aren't exposed in the github and all that
+
+and another app .env.sample
+
+create an account on appwrite
+
+after creating account learn how to read docs on https://appwrite.io/docs
+
+there are alot of major things used here like Databases,
+Functions, Auth, Storage
+
+this project we work on Auth(authentication) , Databases, and Storage.
+
+create project and get unique id.
+ then go to .env ANND Write whats below
+
+ REACT_APP_APPWRITE_URL=
+REACT_APP_APPWRITE_PROJECT_ID=66dee36b00045538b662
+
+then go to the website in add a platform click web
+then itll ask for name go to package.json in our example
+"name": "my-vit-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module"
+
+  and 
+
+  for domain name make sure u set it very properly
+  or else when u deploy on vercel or netlify sub domain 
+  it'll cause core errors
+
+  all it requires localhost
+
+  then it tells us to install appwrite and
+
+  import { Client } from 'appwrite';
+
+  then click on next... then it tells us to initialize
+
+  const client = new Client();
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('66dee36b00045538b662');
+
+go to .env and fill the other one
+
+
+REACT_APP_APPWRITE_URL=https://cloud.appwrite.io/v1
+REACT_APP_APPWRITE_PROJECT_ID=66dee36b00045538b662
+then click on next
+
+but we also need 
+
+REACT_APP_APPWRITE_DATABASE_ID=
+
+and in databases collections can be found so also another
+
+REACT_APP_APPWRITE_COLLECTION_ID=
+
+and
+
+REACT_APP_APPWRITE_BUCKET_ID=
+
+it is the storage we're gonna work with.
+
+we are on overview page go to Databases then click on create
+Database. any name we want we can call it. id will be given automatically
+then copy data base id into .env
+once we're inside database we need to create a collection in
+that page.
+
+i create the database in name of Database and a collection inside
+it named posts
+
+now inside posts after we coppied the ids into our env we need
+to add some attributes.
+
+there are alot of options like string boolean integer float datetime
+Email IP Enum Relationship
+
+most times we will use string for attribute key we set title
+he said for size use what u want but default he went 255
+
+255 default for how much character can be in our title and we tick
+the required that the user is required to do these then create
+then another string named content
+
+another string called featuredImage that will store the url of our image.
+
+then for next one we can create it as string or boolean. ill go with
+boolean to be opposite of his. named status
+
+another string we add called userID
+
+now we learn how we can make queries with the databases.
+
+other than attributes we have indexes. go and create index
+named status. index type Key. attribute status then press create.
+
+we can create queries using just attributes but we get more advantage
+using indexes.
+
+now for the bucket id
+
+go to the setting section to see who can have permission to add these
+documents. not anyone can come and do that we need to give permission to
+users(already logged in). it'll automatically wire these things.
+
+we click on add role then all Users. permission goes in order
+of crud. we give all permission then press update.
+
+we will talk about Functions another video now we go to storage
+text file.
+
+
+on vercel.app or .netlify.app (this one is with warcell)
