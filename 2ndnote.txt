@@ -61,3 +61,21 @@ const client = new Client()
 const account = new Account(client);
 
 we created auth.js and now we're going to use storage of appwrite to see how things work.
+
+after fixing up the backend part of our app createpost deletepost
+editpost, etc. we install redux, reduxjs/toolkit , react-router-dom
+
+we're gonna use cmd to create pages and folder and files for quicker
+approach
+ls : shows us the folders and directories
+
+mkdir pages : makes directory pages
+then cd into pages to create in them
+
+touch AddPost.jsx AllPosts.jsx EditPosts.jsx Home.jsx Login.jsx 
+Post.jsx Signup.jsx : touch helps us create these files.
+
+Touch does not work in my vscode and is not quite used in windows.
+ni creates file 1 by 1
+
+ni name of the file : create new item which is file in directory we are at.

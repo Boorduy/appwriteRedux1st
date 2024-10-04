@@ -1,0 +1,165 @@
+useSelector explainedd:
+
+In React, useSelector is a hook provided by the react-redux library, which allows your component to 
+extract data from the Redux store's state. The Redux store is a centralized state management system, 
+and useSelector helps React components access this shared state.
+
+Breakdown of useSelector:
+import { useSelector } from 'react-redux': This line imports the useSelector hook from the react-redux
+ library, enabling you to use it in your component to read values from the Redux store.
+
+Usage:
+
+The useSelector hook accepts a selector function as its argument. This function determines what part 
+of the Redux state you want to extract. Inside the selector function, you get access to the entire 
+Redux store state, and you return the specific data you need for your component.
+
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+const MyComponent = () => {
+  // Using useSelector to access a part of the Redux state
+  const user = useSelector((state) => state.user);
+
+  return (
+    <div>
+      <h1>User: {user.name}</h1>
+    </div>
+  );
+};
+
+
+
+State Access: The useSelector function gets the current Redux store state as an argument (state), and then 
+you extract the data you need from it.
+
+In this case, state.user is being accessed, which might represent the user data inside the Redux state.
+Re-render: The component will re-render when the selected part of the state changes. For example, if the 
+user object in the Redux store gets updated, MyComponent will automatically re-render with the updated data.
+
+import { useNavigate } from 'react-router-dom' explained:
+
+Breakdown of useNavigate:
+import { useNavigate } from 'react-router-dom': This line imports the useNavigate hook from the 
+react-router-dom library, allowing you to use it to programmatically navigate to different routes 
+in your app.
+
+Usage:
+
+When you call useNavigate, it returns a function that you can use to navigate to a different route or URL.
+
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const MyComponent = () => {
+  // Get the navigate function from useNavigate
+  const navigate = useNavigate();
+
+  // Handler for navigating to another page
+  const goToHomePage = () => {
+    navigate('/home'); // Programmatically navigate to the /home route
+  };
+
+  return (
+    <div>
+      <button onClick={goToHomePage}>Go to Home Page</button>
+    </div>
+  );
+};
+
+export default MyComponent;
+How it works:
+useNavigate(): When this hook is called, it returns a navigate function that can be used to change 
+the current URL programmatically.
+
+navigate('/home'): This will push a new entry onto the history stack and change the URL to /home.
+This has the same effect as clicking a <Link> component with to="/home".
+
+onClick={goToHomePage}: In the example, when the button is clicked, the goToHomePage function is executed,
+ and it calls navigate('/home') to navigate to the "Home" page.
+
+Optional Parameters:
+You can also provide options to navigate for more advanced usage:
+
+Replace the current entry:
+
+navigate('/home', { replace: true }) will replace the current history entry with the new one, 
+so the previous page won't be available when using the browser's back button.
+Navigate back or forward:
+
+navigate(-1) will go back one step in history (similar to clicking the browser's back button).
+navigate(1) will go forward one step.
+Benefits:
+
+Programmatic Navigation: useNavigate allows navigation based on user actions (like form submission, 
+button clicks, etc.) without requiring route links.
+
+Fine-grained control: It gives you more control over navigation behavior, such as replacing history 
+entries or navigating programmatically under specific conditions.
+
+slug is required in paths to take us directly to what we clicked and chose cause they will all have
+specific id
+{
+        path: "/edit-post/:slug",
+        //edit post can't just be edit-post we have to pass a slug to go directly on that post
+        element: 
+        <Protected authentication>
+          <EditPosts />
+        </Protected>
+      },
+
+"/edit-post/:slug" means this route will match URLs that start with /edit-post/ and are 
+followed by a dynamic parameter, called slug.
+:slug is a route parameter, and it acts like a variable in the URL. When a user navigates 
+to /edit-post/some-slug, some-slug will be passed as the slug parameter to the component.
+Example URL: /edit-post/my-first-post would set slug to "my-first-post", allowing the 
+application to display or edit the corresponding post.
+Comment: //edit post can't just be edit-post we have to pass a slug to go directly on that post:
+
+This comment explains that the route must have a dynamic slug parameter, which ensures that the 
+URL includes a unique identifier for the post to be edited.
+Without this, there wouldn't be a way to tell which specific post is being edited 
+
+
+(i.e., /edit-post alone isn't sufficient to identify a post).
+
+Why is the slug necessary?
+The slug is required to identify which post to edit. For example, when you're editing a blog post, 
+the application needs a unique identifier (like the slug) to fetch and display the correct post 
+for editing. Without the slug, the app wouldn't know which post is being targeted.
+
+Summary:
+path: "/edit-post/:slug": Defines a route with a dynamic slug parameter in the URL.
+<Protected authentication>: Protects the route so that only authenticated users can access it.
+<EditPosts />: The component that handles editing posts, which will use the slug to load the
+correct post data.
+
+The authentication check is the process of verifying whether a user is logged in and authorized 
+to access certain parts of your application (such as a protected route).
+This check can happen on the client-side, often in the background, to ensure that the user remains 
+authenticated while navigating between different pages or interacting with the app.
+
+Why Query the Store?:
+
+The Redux store holds the central state for the entire app, so querying the store allows the 
+authentication check to be done in a consistent and reliable way across all components.
+It ensures that the app's components and pages always have access to the latest authentication status.
+This way, you can prevent unauthorized users from accessing protected routes without needing to 
+make additional API calls every time.
+
+Background Checks:
+
+When the authentication check happens in the background, it means that the app is continuously or 
+passively checking the store's state to see if the user is authenticated. For example, if the user 
+logs out or their session expires, the store would be updated, and the check would detect this and 
+respond accordingly (e.g., redirecting the user to a login page).
+
+summary of query to store:
+"Making queries to the store" means that your authentication-checking logic is accessing data 
+from the Redux store (such as the user's login status).
+
+This process is done in the background, meaning the app continuously or automatically checks 
+the store's state to determine if the user is authenticated.
+
+By querying the store, the app ensures that the authentication status is always 
+up-to-date and consistent across all components.

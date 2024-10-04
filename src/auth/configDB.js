@@ -133,6 +133,8 @@ export class Service {
     }
 }
 
+//run npm install @reduxjs/toolkit
+// run npm install react-redux       
 
 const service = new Service()
 
