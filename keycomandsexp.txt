@@ -1,0 +1,27 @@
+redux dispatch() : Dispatch is a function that sends an action to the Redux store, which then triggers a 
+state change in your application. In simpler terms, dispatch is a messenger that carries an action from 
+your application to the Redux store, which then updates the state accordingly.
+
+inline-block: Block & Inline
+While using the property display: inline-block will wrap the element to prevent the text inside from 
+extending beyond its parent. Lastly, using the property display: block will put the element on its 
+own line and fill its parent.
+
+padding: This class is used to create space around the element, inside any defined border. We can set 
+different paddings for individual sides (top, right, bottom, left). It is important to add border 
+properties to implement padding properties.
+
+margin: Margin is the space applied to the outside of an element's borders. It can also
+be used to add spaces between elements in a design.
+
+react-redux:
+
+{useSelector} react-redux: UseSelector() is a custom hook included in the React 
+Redux library, and it is used to extract data from the Redux store state
+for use in a React component. It does so by using a selector function
+
+another exp of useSelector 
+    const userData = useSelector((state) => state.auth.userData)
+
+
+ask chatgpt why flex comes before flex-wrap result in => flex flex-wrap

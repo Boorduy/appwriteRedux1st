@@ -1,0 +1,65 @@
+2 aproaches(pathways to do things.) TinyMCE editor and react forms(can be directly handled
+but industry standard way of handling things helps us to work in different jobs.) it can look a litle too
+much but its good and easy overtime to use. read https://www.tiny.cloud/docs/tinymce/6/react-cloud/
+and https://react-hook-form.com/docs/usecontroller/controller
+
+Install the tinymce-react package and save it to your package.json with --save.
+
+npm install --save @tinymce/tinymce-react
+
+npm install react-hook-form
+
+className='flex ml-auto means everything else is left onto the very right side.
+
+now we have to loop through nav items where we created our un ordered list.
+{
+            navItems.map((item))
+            }
+we set item as parameter to then do .map((item) => )
+each item inside the object we are calling it item. we dont want to show everything so we go onto to
+create condition for when item is active is true like this
+
+.map((item) => item.active ? item : null )
+my guess was almost correct but we have to complicate it further. 
+navItem.map((item) => item.active ? (<li key={item.name}> <button 
+onClick={() => navigate(items.slug)}></button> <li/>) : null )
+
+          <ul className='flex ml-auto'>
+            {
+            navItems.map((item)=> item.active ? (
+            <li key={item.name}>
+              <button onClick={() => navigate(item.slug)}
+              className='inline-block px-6 py-2 duration-200 hover:bg-blue-300 rounded-full'>
+
+              </button>
+            </li>) : null)
+            }
+          </ul>
+
+2 aproaches to show             {authStatus ? "" : null} logout to the person viewing it or
+{authstatus && (
+
+)}
+if only it is true then do this.
+
+react-hook-form {controller}: controller takes a few things as default values 
+which can be reviewed inside the docs.//name, control, render, defaultValue.
+<Controller name={name || 'content'} /> if control={control} we had useForm we use it in control.
+https://react-hook-form.com/docs/useform/control
+        render={() => ()} to 
+        
+        <Controller name={name || 'content'}
+        control={control}
+        render={({field: {onChange}}) => (
+          <Editor />
+        )}
+        />
+
+       if (value && typeof value === "string")
+            return value.trim().toLowerCase().replace(, '')
+
+instead of .replace() i used to use regex but I'll do this method.
+return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, '-')
+this is a prompt that says dont use lowercase(a), uppercase(zA), digit(d), spaces(s), g means globally(g)
+^this is a negate
+

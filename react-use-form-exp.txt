@@ -1,0 +1,89 @@
+export default function PostForm({post}) {
+    //we might recieve a form so we use that to edit it.
+    const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
+        //we need these to handle useForm
+        defaultValues: {
+            title: post?.title || "",
+            slug: post?.slug || "",
+            content: post?.content || "",
+            status: post?.status || "active"
+        }
+    })
+}
+
+const {register, handleSubmit, watch, setValue, control, getValues}
+
+register: This method allows you to register an input or select element and apply validation rules
+to React Hook Form. Validation rules are all based on the HTML standard and also allow for 
+custom validation methods.
+
+handleSubmit: This function will receive the form data if form validation is successful.
+
+watch: This method will watch specified inputs and return their values. It is useful
+to render input value and for determining what to render by condition.
+
+setValue: This function allows you to dynamically set the value of a registered field and have the options 
+to validate and update the form state. At the same time, it tries to avoid unnecessary rerender.
+
+control: This object contains methods for registering components into React Hook Form.
+
+getValues: An optimized helper for reading form values. The difference between watch and 
+getValues is that getValues will not trigger re-renders or subscribe to input changes.
+
+useForm has these that we can use.
+
+<form onSubmit={handleSubmit(submitAction)} //this is how Powerful PostForm works which we installed
+
+const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
+        //we need these to handle useForm
+        defaultValues: {
+            title: post?.title || "",
+            slug: post?.slug || "",
+            content: post?.content || "",
+            status: post?.status || "active"
+        }
+    })
+
+const submitAction = async(data) => {}
+
+
+once we <Input 
+                label="Title"
+                placeholder="Title"
+                className="mb-4"
+                {...register("title", {required:true})}
+                />
+register is taking the name title for them and its mandatory for field to be filled then we are
+watching it here.
+React.useEffect(() =>{
+        watch ((value, {name}) => {if (name === "title") {
+            setValue("slug", slugTransform(value.title), {shouldValidate: true})
+        }
+    })
+    }, [watch, slugTransform, setValue])
+
+onInput={(e) => {
+                    setValue("slug", slugTransform(e.currentTarget.value), {shouldValidate: true})
+                }}
+we are using onInput that as soon as we are given input setValue for them
+
+to set any value we only use 1 hook given by use-form to us. setValue
+and to use getValues
+                <RTE
+                label= "Content: "
+                name= "content"
+                control={control}
+                //specifally designed of Input fields that are 3rd party or custom made Inputs
+                />
+
+control is given to us as 1 of the hooks of useForm
+const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
+        //we need these to handle useForm
+        defaultValues: {
+            title: post?.title || "",
+            slug: post?.slug || "",
+            content: post?.content || "",
+            status: post?.status || "active"
+        }
+    })
+
